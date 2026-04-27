@@ -1,0 +1,168 @@
+/* =========================================
+   1. RESET & DASAR
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+/* =========================================
+   2. KOTAK UTAMA (WRAPPER)
+   ========================================= */
+.changelog-container {
+  background-color: #ffffff;
+  border: 2px solid #1e293b;
+  border-radius: 24px;
+  padding: 60px 40px;
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.changelog-header h1 {
+  font-size: 2.5rem;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.changelog-header p {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  margin-bottom: 50px;
+}
+
+/* =========================================
+   3. TIMELINE LAYOUT & POSITIONING
+   ========================================= */
+.timeline {
+  position: relative; /* Menjadi patokan untuk garis vertikal absolute */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Garis Vertikal Tengah */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* Menarik garis tepat ke tengah */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #1e293b;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  position: relative; /* Patokan untuk titik (dot) absolute */
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Tanggal di Kiri */
+.timeline-date {
+  width: 50%;
+  text-align: right;
+  padding-right: 40px;
+  color: #94a3b8;
+  font-size: 1.05rem;
+}
+
+/* Titik Hitam di Tengah */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background-color: #1e293b;
+  border-radius: 50%;
+  z-index: 10; /* Pastikan titik berada di atas garis */
+}
+
+/* Konten Teks di Kanan */
+.timeline-content {
+  width: 50%;
+  text-align: left;
+  padding-left: 40px;
+  color: #0f172a;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* =========================================
+   4. TOMBOL FOOTER
+   ========================================= */
+.changelog-footer {
+  margin-top: 60px;
+}
+
+.btn-primary {
+  background-color: #1e293b;
+  color: #ffffff;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #334155;
+}
+
+/* =========================================
+   5. RESPONSIVE (TAMPILAN MOBILE)
+   ========================================= */
+@media (max-width: 640px) {
+  /* Pindahkan garis ke sebelah kiri */
+  .timeline-line {
+    left: 20px;
+    transform: none;
+  }
+
+  /* Ubah arah flex agar menumpuk ke bawah */
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+
+  /* Pindahkan posisi titik hitam mengikuti garis */
+  .timeline-dot {
+    left: 20px;
+    transform: translateX(-50%);
+    top: 2px; /* Sejajarkan dengan baris pertama teks */
+  }
+
+  /* Lebarkan teks 100% dan beri jarak dari garis di kiri */
+  .timeline-date,
+  .timeline-content {
+    width: 100%;
+    text-align: left;
+    padding-left: 50px;
+    padding-right: 0;
+  }
+
+  .timeline-date {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+}
